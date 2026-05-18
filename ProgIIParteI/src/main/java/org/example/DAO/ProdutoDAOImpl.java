@@ -14,10 +14,10 @@ import java.util.List;
 public class ProdutoDAOImpl implements ProdutoDAO {
 
     @Override
-    public void cadastrar(Produto produto){
+    public void cadastrar(Produto produto) {
         String sql = "INSERT INTO produtos (nome, descricao, preco, estoque) VALUES (?,?,?,?)";
         try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)){
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
@@ -26,13 +26,13 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             stmt.executeUpdate();
 
 
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erro ao cadastrar produto " + e.getMessage());
         }
     }
 
     @Override
-    public Produto buscarPorId(int id){
+    public Produto buscarPorId(int id) {
         String sql = "SELECT * FROM produtos WHERE id = ?";
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -40,7 +40,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 Produto produto = new Produto(
                         rs.getInt("id"),
                         rs.getString("nome"),
@@ -50,7 +50,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
                 );
                 return produto;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Erro ao buscar produto: " + e.getMessage());
         }
         return null;
