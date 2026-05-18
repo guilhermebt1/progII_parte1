@@ -19,8 +19,10 @@ public class TelaAdministrativa {
     public void exibir() {
         int opcao = 0;
         while (opcao != 2) {
-            System.out.println("\n=== TELA ADMINISTRATIVA ===");
+            System.out.println("\nTELA ADMINISTRATIVA");
             System.out.println("1. Buscar produto");
+            System.out.println("2. Sair");
+            System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
             scanner.nextLine();
 

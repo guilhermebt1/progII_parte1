@@ -30,6 +30,7 @@ public class TelaCliente {
             System.out.println("\n=== TELA DO CLIENTE ===");
             System.out.println("Bem vindo, " + usuario.getNome() + "!");
             System.out.println("1. Buscar produto");
+            System.out.println("2. Sair");
             System.out.print("Escolha uma opção: ");
 
             opcao = scanner.nextInt();

@@ -21,6 +21,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             stmt.setString(3, usuario.getLogin());
             stmt.setString(4, usuario.getSenha());
             stmt.setString(5, usuario.getPerfil().name());
+            stmt.executeUpdate();
 
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar usuário " + e.getMessage());
