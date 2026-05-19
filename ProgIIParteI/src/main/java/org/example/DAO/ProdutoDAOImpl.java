@@ -13,23 +13,6 @@ import java.util.List;
 
 public class ProdutoDAOImpl implements ProdutoDAO {
 
-    @Override
-    public void cadastrar(Produto produto) {
-        String sql = "INSERT INTO produtos (nome, descricao, preco, estoque) VALUES (?,?,?,?)";
-        try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, produto.getNome());
-            stmt.setString(2, produto.getDescricao());
-            stmt.setDouble(3, produto.getPreco());
-            stmt.setInt(4, produto.getEstoque());
-            stmt.executeUpdate();
-
-
-        } catch (Exception e) {
-            System.out.println("Erro ao cadastrar produto " + e.getMessage());
-        }
-    }
 
     @Override
     public Produto buscarPorId(int id) {
@@ -81,38 +64,6 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             System.out.println("Erro ao buscar produto: " + e.getMessage());
         }
         return produtos;
-    }
-
-    @Override
-    public void remover(int id) {
-        String sql = "DELETE FROM produtos WHERE id = ?";
-        try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-
-        } catch (Exception e) {
-            System.out.println("Erro ao remover produto: " + e.getMessage());
-        }
-    }
-
-    @Override
-    public void atualizar(Produto produto) {
-        String sql = "UPDATE produtos SET nome = ?, descricao = ?, preco = ?, estoque = ? WHERE id = ?";
-        try (Connection conn = ConnectionFactory.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, produto.getNome());
-            stmt.setString(2, produto.getDescricao());
-            stmt.setDouble(3, produto.getPreco());
-            stmt.setInt(4, produto.getEstoque());
-            stmt.setInt(5, produto.getId());
-            stmt.executeUpdate();
-
-        } catch (Exception e) {
-            System.out.println("Erro ao atualizar produto: " + e.getMessage());
-        }
     }
 
 }

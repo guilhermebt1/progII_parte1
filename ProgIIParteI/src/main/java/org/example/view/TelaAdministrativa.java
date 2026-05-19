@@ -23,6 +23,9 @@ public class TelaAdministrativa {
             System.out.println("1. Buscar produto");
             System.out.println("2. Sair");
             System.out.print("Escolha uma opção: ");
+            System.out.print("NÃO IMPLEMENTADO - Cadastrar novo produto ");
+            System.out.print("NÃO IMPLEMENTADO - Remover Produto ");
+            System.out.print("NÃO IMPLEMENTADO - Atualizar Produto ");
             opcao = scanner.nextInt();
             scanner.nextLine();
 

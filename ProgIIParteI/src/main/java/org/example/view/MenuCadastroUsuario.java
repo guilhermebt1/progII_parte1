@@ -18,7 +18,7 @@ public class MenuCadastroUsuario {
     }
 
     public void exibir() {
-        System.out.println("\n=== CADASTRO DE USUÁRIO ===");
+        System.out.println("\nCADASTRO DE USUÁRIO");
 
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
@@ -36,17 +36,17 @@ public class MenuCadastroUsuario {
         String confirmaSenha = scanner.nextLine();
 
         if (!validarCampos(nome, sobrenome, login, senha)) {
-            System.out.println("Erro: nenhum campo pode estar vazio!");
+            System.out.println("Erro: campo vazio!");
             return;
         }
 
         if (!validarSenhas(senha, confirmaSenha)) {
-            System.out.println("Erro: as senhas não coincidem!");
+            System.out.println("Erro: senhas não são iguais");
             return;
         }
 
         if (usuarioDAO.loginExiste(login)) {
-            System.out.println("Erro: esse login já está em uso!");
+            System.out.println("Erro: usuário já existe!");
             return;
         }
 

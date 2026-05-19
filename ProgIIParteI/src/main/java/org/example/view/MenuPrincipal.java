@@ -20,7 +20,7 @@ public class MenuPrincipal {
     public void exibir() {
         int opcao = 0;
         while (opcao != 4) {
-            System.out.println("\n=== MENU PRINCIPAL ===");
+            System.out.println("\nMENU PRINCIPAL");
             System.out.println("1. Cadastrar novo usuário");
             System.out.println("2. Login - Usuário");
             System.out.println("3. Login - Administrativo");

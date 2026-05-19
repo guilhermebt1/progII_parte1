@@ -13,14 +13,12 @@ import java.util.Scanner;
 public class TelaCliente {
 
     private Usuario usuario;
-    private Carrinho carrinho;
     private ProdutoDAO produtoDAO;
     private Scanner scanner;
 
     public TelaCliente(Scanner scanner, Usuario usuario) {
         this.scanner = scanner;
         this.usuario = usuario;
-        this.carrinho = new Carrinho(usuario);
         this.produtoDAO = new ProdutoDAOImpl();
     }
 
@@ -32,6 +30,9 @@ public class TelaCliente {
             System.out.println("1. Buscar produto");
             System.out.println("2. Sair");
             System.out.print("Escolha uma opção: ");
+            System.out.print("NÃO IMPLEMENTADO - Cadastrar novo produto ");
+            System.out.print("NÃO IMPLEMENTADO - Remover Produto ");
+            System.out.print("NÃO IMPLEMENTADO - Atualizar Produto ");
 
             opcao = scanner.nextInt();
             scanner.nextLine();
