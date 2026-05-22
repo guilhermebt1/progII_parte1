@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Página-1" id="vHQiuNKDsRRwEhY-y5E0">
-    <mxGraphModel dx="1860" dy="623" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2040" dy="731" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -130,7 +130,7 @@
           <mxGeometry height="142.5" width="155" x="1787.5" y="610" as="geometry" />
         </mxCell>
         <mxCell id="wcL2Z4cs3Cg5YYj-U4yW-11" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=default;overflow=fill;" value="&lt;table border=&quot;1&quot; width=&quot;100%&quot; height=&quot;100%&quot; cellpadding=&quot;4&quot; style=&quot;width:100%;height:100%;border-collapse:collapse;&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;th align=&quot;center&quot;&gt;Produto&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;center&quot;&gt;-int id&lt;br&gt;-String nome&lt;br&gt;-String descricao&lt;br&gt;-double preco&lt;br&gt;-int estoque&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td align=&quot;center&quot;&gt;+getId() : int&lt;br&gt;+getNome() : String&lt;br&gt;+getDescricao() : String&lt;br&gt;+getPreco() : double&lt;br&gt;+getEstoque() : int&lt;br&gt;+setId(int) : void&lt;br&gt;+setNome(String) : void&lt;br&gt;+setDescricao(String) : void&lt;br&gt;+setPreco(double) : void&lt;br&gt;+setEstoque(int) : void&lt;br&gt;&lt;br&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;" vertex="1">
-          <mxGeometry height="280" width="160" x="1785" y="910" as="geometry" />
+          <mxGeometry height="280" width="160" x="1782.5" y="860" as="geometry" />
         </mxCell>
         <mxCell id="wcL2Z4cs3Cg5YYj-U4yW-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="referência" vertex="1">
           <mxGeometry height="30" width="65" x="1832.5" y="790" as="geometry" />
@@ -190,7 +190,7 @@
           <mxGeometry height="20" width="67" x="613" y="310" as="geometry" />
         </mxCell>
         <mxCell id="wcL2Z4cs3Cg5YYj-U4yW-59" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="usa" vertex="1">
-          <mxGeometry height="25" width="58.75" x="230" y="1280" as="geometry" />
+          <mxGeometry height="25" width="58.75" x="370" y="1200" as="geometry" />
         </mxCell>
         <mxCell id="wcL2Z4cs3Cg5YYj-U4yW-65" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="redireciona" vertex="1">
           <mxGeometry height="20" width="67" x="740" y="441.25" as="geometry" />
