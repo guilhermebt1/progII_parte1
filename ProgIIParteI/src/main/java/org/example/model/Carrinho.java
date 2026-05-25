@@ -10,7 +10,7 @@ public class Carrinho {
 
     public Carrinho(Usuario usuario) {
         this.usuario = usuario;
-        //Iniciando a lista vazia pois o carrinho começa vazio
+        //Iniciando a lista vazia para não bugar pq o carrinho começa vazio
         this.itens = new ArrayList<>();
     }
 

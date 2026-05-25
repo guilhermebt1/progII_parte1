@@ -19,7 +19,7 @@ public class TelaAdministrativa {
     public void exibir() {
         int opcao = 0;
         while (opcao != 5) {
-            System.out.println("\n=== TELA ADMINISTRATIVA ===");
+            System.out.println("\nMENU ADMINISTRATIVO");
             System.out.println("1. Cadastrar produto");
             System.out.println("2. Buscar produto");
             System.out.println("3. Remover produto");
@@ -53,9 +53,9 @@ public class TelaAdministrativa {
     }
 
     public void cadastrarProduto() {
-        System.out.println("\n=== CADASTRAR PRODUTO ===");
+        System.out.println("\nCADASTRAR PRODUTO");
 
-        System.out.print("Nome: ");
+        System.out.print("Nome do Produto: ");
         String nome = scanner.nextLine();
 
         System.out.print("Descrição: ");
@@ -70,11 +70,11 @@ public class TelaAdministrativa {
 
         Produto produto = new Produto(0, nome, descricao, preco, estoque);
         produtoDAO.cadastrar(produto);
-        System.out.println("Produto cadastrado com sucesso!");
+        System.out.println("Produto cadastrado com sucesso");
     }
 
     public void buscarProduto() {
-        System.out.println("\n=== BUSCAR PRODUTO ===");
+        System.out.println("\nBUSCAR PRODUTO");
         System.out.println("1. Buscar por nome");
         System.out.println("2. Buscar por ID");
         System.out.print("Escolha uma opção: ");
@@ -122,8 +122,8 @@ public class TelaAdministrativa {
     }
 
     public void removerProduto() {
-        System.out.println("\n=== REMOVER PRODUTO ===");
-        System.out.print("Digite o ID do produto a remover: ");
+        System.out.println("\nREMOVER PRODUTO");
+        System.out.print("Digite o ID do produto que deseja remover: ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
@@ -134,12 +134,12 @@ public class TelaAdministrativa {
         }
 
         produtoDAO.remover(id);
-        System.out.println("Produto removido com sucesso!");
+        System.out.println("Produto removido com sucesso");
     }
 
     public void atualizarProduto() {
-        System.out.println("\n=== ATUALIZAR PRODUTO ===");
-        System.out.print("Digite o ID do produto a atualizar: ");
+        System.out.println("\nATUALIZAR PRODUTO");
+        System.out.print("Digite o ID do produto a ser atualizado: ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
@@ -169,6 +169,6 @@ public class TelaAdministrativa {
         if (!estoqueStr.isBlank()) produto.setEstoque(Integer.parseInt(estoqueStr));
 
         produtoDAO.atualizar(produto);
-        System.out.println("Produto atualizado com sucesso!");
+        System.out.println("Produto atualizado com sucesso");
     }
 }

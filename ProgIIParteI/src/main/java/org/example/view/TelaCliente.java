@@ -27,7 +27,7 @@ public class TelaCliente {
     public void exibir() {
         int opcao = 0;
         while (opcao != 6) {
-            System.out.println("\n=== TELA DO CLIENTE ===");
+            System.out.println("\nTELA DO CLIENTE");
             System.out.println("Bem vindo, " + usuario.getNome() + "!");
             System.out.println("1. Buscar produto");
             System.out.println("2. Adicionar ao carrinho");
@@ -57,7 +57,7 @@ public class TelaCliente {
                     verCarrinho();
                     break;
                 case 6:
-                    System.out.println("Voltando ao menu principal...");
+                    System.out.println("Voltando ao menu principal");
                     break;
                 default:
                     System.out.println("Opção inválida!");
@@ -66,7 +66,7 @@ public class TelaCliente {
     }
 
     public void buscarProduto() {
-        System.out.println("\n=== BUSCAR PRODUTO ===");
+        System.out.println("\nBUSCAR PRODUTO");
         System.out.println("1. Buscar por nome");
         System.out.println("2. Buscar por ID");
         System.out.print("Escolha uma opção: ");
@@ -114,7 +114,7 @@ public class TelaCliente {
     }
 
     public void adicionarAoCarrinho() {
-        System.out.println("\n=== ADICIONAR AO CARRINHO ===");
+        System.out.println("\nADICIONAR AO CARRINHO");
         System.out.print("Digite o ID do produto: ");
         int id = scanner.nextInt();
         scanner.nextLine();
@@ -144,7 +144,7 @@ public class TelaCliente {
     }
 
     public void removerDoCarrinho() {
-        System.out.println("\n=== RETIRAR DO CARRINHO ===");
+        System.out.println("\nRETIRAR DO CARRINHO");
 
         if (carrinho.getItens().isEmpty()) {
             System.out.println("Carrinho vazio!");
@@ -173,7 +173,7 @@ public class TelaCliente {
     }
 
     public void verCarrinho(){
-        System.out.println("Itens da compra:");
+        System.out.println("Itens da sua compra:");
         double total = 0;
         for (ItemCarrinho item : carrinho.getItens()) {
             double subtotal = item.getProduto().getPreco() * item.getQuantidade();
@@ -187,7 +187,7 @@ public class TelaCliente {
     }
 
     public void confirmarCompra() {
-        System.out.println("\n=== CONFIRMAR COMPRA ===");
+        System.out.println("\nCONFIRMAR COMPRA");
 
         if (carrinho.getItens().isEmpty()) {
             System.out.println("Carrinho vazio!");
@@ -207,7 +207,7 @@ public class TelaCliente {
         }
 
         System.out.println("Total: R$" + total);
-        System.out.print("Confirmar compra? (s/n): ");
+        System.out.print("Confirmar compra? Digite s ou n : ");
         String resposta = scanner.nextLine();
 
         if (resposta.equalsIgnoreCase("s")) {

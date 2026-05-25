@@ -41,10 +41,10 @@ public class MenuPrincipal {
                     efetuarLogin(Perfil.ADMIN);
                     break;
                 case 4:
-                    System.out.println("Encerrando o sistema...");
+                    System.out.println("Saindo...");
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println("Opção inválida");
             }
         }
     }
@@ -65,10 +65,10 @@ public class MenuPrincipal {
                     new TelaCliente(scanner, usuario).exibir();
                 }
             } else {
-                System.out.println("Acesso negado! Perfil incorreto.");
+                System.out.println("Acesso negado pois o perfil está incorreto.");
             }
         } else {
-            System.out.println("Login ou senha inválidos!");
+            System.out.println("Login ou senha inválidos");
         }
     }
 }

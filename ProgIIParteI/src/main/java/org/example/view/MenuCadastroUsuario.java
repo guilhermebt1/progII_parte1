@@ -18,7 +18,7 @@ public class MenuCadastroUsuario {
     }
 
     public void exibir() {
-        System.out.println("\nCADASTRO DE USUÁRIO");
+        System.out.println("\nCADASTRAR UM USUÁRIO");
 
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
@@ -36,7 +36,7 @@ public class MenuCadastroUsuario {
         String confirmaSenha = scanner.nextLine();
 
         if (!validarCampos(nome, sobrenome, login, senha)) {
-            System.out.println("Erro: campo vazio!");
+            System.out.println("Erro: campo vazio");
             return;
         }
 
@@ -46,13 +46,13 @@ public class MenuCadastroUsuario {
         }
 
         if (usuarioDAO.loginExiste(login)) {
-            System.out.println("Erro: usuário já existe!");
+            System.out.println("Erro: usuário já existe");
             return;
         }
 
         Usuario usuario = new Usuario(0, nome, sobrenome, login, senha, Perfil.USER);
         usuarioDAO.cadastrar(usuario);
-        System.out.println("Usuário cadastrado com sucesso!");
+        System.out.println("Usuário cadastrado com sucesso");
     }
 
     private boolean validarSenhas(String senha, String confirmaSenha) {
