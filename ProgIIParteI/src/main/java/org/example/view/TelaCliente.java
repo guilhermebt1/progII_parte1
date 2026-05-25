@@ -26,14 +26,15 @@ public class TelaCliente {
 
     public void exibir() {
         int opcao = 0;
-        while (opcao != 5) {
+        while (opcao != 6) {
             System.out.println("\n=== TELA DO CLIENTE ===");
             System.out.println("Bem vindo, " + usuario.getNome() + "!");
             System.out.println("1. Buscar produto");
             System.out.println("2. Adicionar ao carrinho");
             System.out.println("3. Retirar do carrinho");
             System.out.println("4. Confirmar compra");
-            System.out.println("5. Sair");
+            System.out.println("5. Ver Carrinho");
+            System.out.println("6. Sair");
             System.out.print("Escolha uma opção: ");
 
             opcao = scanner.nextInt();
@@ -53,6 +54,9 @@ public class TelaCliente {
                     confirmarCompra();
                     break;
                 case 5:
+                    verCarrinho();
+                    break;
+                case 6:
                     System.out.println("Voltando ao menu principal...");
                     break;
                 default:
@@ -166,6 +170,20 @@ public class TelaCliente {
 
         carrinho.removerItem(produto);
         System.out.println("Produto retirado do carrinho!");
+    }
+
+    public void verCarrinho(){
+        System.out.println("Itens da compra:");
+        double total = 0;
+        for (ItemCarrinho item : carrinho.getItens()) {
+            double subtotal = item.getProduto().getPreco() * item.getQuantidade();
+            total += subtotal;
+            System.out.println(
+                    "- " + item.getProduto().getNome() +
+                            " x" + item.getQuantidade() +
+                            " = R$" + subtotal
+            );
+        }
     }
 
     public void confirmarCompra() {
