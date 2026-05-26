@@ -1,0 +1,18 @@
+1. Cadastrar novo usuário
+	1.1 Senhas não são iguais = Funcionando
+	1.2 Usuario Cadastrado com sucesso, criou no banco
+2. Tela Usuario
+	2.1 Buscar Produto
+		2.1.1 ID = Funcionando
+		2.1.1 Nome = Funcionando
+	2.2 Adicionar ao carrinho = Produto adicionado com ID e quantidade
+	2.3 Retirar do Carrinho = Produto removido com sucesso
+	2.6 Ver carrinho = Funcionando
+	2.4 Confirmar Compra = Funcionando
+	2.5 Sair
+3. Tela Administrador
+	3.1 Cadastrar Produto = Funcionando
+	3.2 Buscar Produto = Funcionando 
+	3.3 Remover Produto = Removido com sucesso 
+	3.4 Atualizar Produto = Funcionando
+	3.5 Sair 
