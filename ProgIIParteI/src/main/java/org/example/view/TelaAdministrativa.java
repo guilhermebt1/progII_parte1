@@ -2,29 +2,37 @@ package org.example.view;
 
 import org.example.DAO.ProdutoDAO;
 import org.example.DAO.ProdutoDAOImpl;
-import org.example.model.Produto;
+import org.example.DAO.UsuarioDAO;
+import org.example.DAO.UsuarioDAOImpl;
+import org.example.model.*;
+
 import java.util.List;
 import java.util.Scanner;
 
 public class TelaAdministrativa {
 
     private ProdutoDAO produtoDAO;
+    private UsuarioDAO usuarioDAO;
     private Scanner scanner;
 
     public TelaAdministrativa(Scanner scanner) {
         this.scanner = scanner;
         this.produtoDAO = new ProdutoDAOImpl();
+        this.usuarioDAO = new UsuarioDAOImpl();
     }
 
     public void exibir() {
         int opcao = 0;
-        while (opcao != 5) {
+        while (opcao != 8) {
             System.out.println("\nMENU ADMINISTRATIVO");
             System.out.println("1. Cadastrar produto");
             System.out.println("2. Buscar produto");
             System.out.println("3. Remover produto");
             System.out.println("4. Atualizar produto");
-            System.out.println("5. Sair");
+            System.out.println("5. Adicionar produto no carrinho do usuário");
+            System.out.println("6. Remover produto do carrinho do usuário");
+            System.out.println("7. Atualizar quantidade no carrinho do usuário");
+            System.out.println("8. Sair");
             System.out.print("Escolha uma opção: ");
 
             opcao = scanner.nextInt();
@@ -44,6 +52,15 @@ public class TelaAdministrativa {
                     atualizarProduto();
                     break;
                 case 5:
+                    adicionarProdutoCarrinhoUsuario();
+                    break;
+                case 6:
+                    removerProdutoCarrinhoUsuario();
+                    break;
+                case 7:
+                    atualizarQuantidadeCarrinhoUsuario();
+                    break;
+                case 8:
                     System.out.println("Voltando ao menu principal...");
                     break;
                 default:
@@ -171,4 +188,141 @@ public class TelaAdministrativa {
         produtoDAO.atualizar(produto);
         System.out.println("Produto atualizado com sucesso");
     }
+
+    private Carrinho buscarCarrinhoUsuario() {
+        System.out.print("Digite o login do usuário: ");
+        String login = scanner.nextLine();
+
+        Usuario usuario = usuarioDAO.buscarPorLogin(login);
+        if (usuario == null) {
+            System.out.println("Usuário não encontrado!");
+            return null;
+        }
+
+        System.out.println("Usuário encontrado: " + usuario.getNome());
+        return CarrinhoMemoria.getCarrinho(usuario);
+    }
+
+    public void adicionarProdutoCarrinhoUsuario() {
+        System.out.println("\nADICIONAR PRODUTO NO CARRINHO DO USUÁRIO");
+
+        Carrinho carrinho = buscarCarrinhoUsuario();
+        if (carrinho == null) return;
+
+        System.out.print("Digite o ID do produto: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Produto produto = produtoDAO.buscarPorId(id);
+        if (produto == null) {
+            System.out.println("Produto Não Encontrado");
+            return;
+        }
+
+        System.out.print("Digite a quantidade: ");
+        int quantidade = scanner.nextInt();
+        scanner.nextLine();
+
+        if (quantidade <= 0) {
+            System.out.println("Quantidade inválida!");
+            return;
+        }
+
+        if (quantidade > produto.getEstoque()) {
+            System.out.println("Quantidade indisponível! Estoque: " + produto.getEstoque());
+            return;
+        }
+
+        carrinho.adicionarItem(new ItemCarrinho(produto, quantidade));
+        System.out.println("Produto adicionado ao carrinho do usuário com sucesso!");
+    }
+
+    public void removerProdutoCarrinhoUsuario() {
+        System.out.println("\nREMOVER PRODUTO DO CARRINHO DO USUÁRIO");
+
+        Carrinho carrinho = buscarCarrinhoUsuario();
+        if (carrinho == null) return;
+
+        if (carrinho.getItens().isEmpty()) {
+            System.out.println("Carrinho do usuário está vazio!");
+            return;
+        }
+
+        System.out.println("Itens no carrinho:");
+        carrinho.getItens().forEach(item -> System.out.println(
+                "ID: " + item.getProduto().getId() +
+                        " | Nome: " + item.getProduto().getNome() +
+                        " | Quantidade: " + item.getQuantidade()
+        ));
+
+        System.out.print("Digite o ID do produto a retirar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        Produto produto = produtoDAO.buscarPorId(id);
+        if (produto == null) {
+            System.out.println("Produto Não Encontrado");
+            return;
+        }
+
+        carrinho.removerItem(produto);
+        System.out.println("Produto removido do carrinho do usuário com sucesso!");
+    }
+
+    public void atualizarQuantidadeCarrinhoUsuario() {
+        System.out.println("\nATUALIZAR QUANTIDADE NO CARRINHO DO USUÁRIO");
+
+        Carrinho carrinho = buscarCarrinhoUsuario();
+        if (carrinho == null) return;
+
+        if (carrinho.getItens().isEmpty()) {
+            System.out.println("Carrinho do usuário está vazio!");
+            return;
+        }
+
+        System.out.println("Itens no carrinho:");
+        carrinho.getItens().forEach(item -> System.out.println(
+                "ID: " + item.getProduto().getId() +
+                        " | Nome: " + item.getProduto().getNome() +
+                        " | Quantidade: " + item.getQuantidade()
+        ));
+
+        System.out.print("Digite o ID do produto a atualizar: ");
+        int id = scanner.nextInt();
+        scanner.nextLine();
+
+        ItemCarrinho itemEncontrado = carrinho.getItens().stream()
+                .filter(item -> item.getProduto().getId() == id)
+                .findFirst()
+                .orElse(null);
+
+        if (itemEncontrado == null) {
+            System.out.println("Produto não encontrado no carrinho!");
+            return;
+        }
+
+        System.out.print("Nova quantidade (atual: " + itemEncontrado.getQuantidade() + "): ");
+        int novaQuantidade = scanner.nextInt();
+        scanner.nextLine();
+
+        if (novaQuantidade <= 0) {
+            System.out.println("Quantidade inválida!");
+            return;
+        }
+
+        if (novaQuantidade > itemEncontrado.getProduto().getEstoque()) {
+            System.out.println("Quantidade indisponível! Estoque: " + itemEncontrado.getProduto().getEstoque());
+            return;
+        }
+
+        itemEncontrado.setQuantidade(novaQuantidade);
+        System.out.println("Quantidade atualizada com sucesso!");
+    }
+
+
+
+
+
+
+
 }

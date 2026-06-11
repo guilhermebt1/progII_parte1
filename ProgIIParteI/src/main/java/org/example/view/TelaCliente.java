@@ -2,10 +2,7 @@ package org.example.view;
 
 import org.example.DAO.ProdutoDAO;
 import org.example.DAO.ProdutoDAOImpl;
-import org.example.model.Carrinho;
-import org.example.model.ItemCarrinho;
-import org.example.model.Produto;
-import org.example.model.Usuario;
+import org.example.model.*;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +17,7 @@ public class TelaCliente {
     public TelaCliente(Scanner scanner, Usuario usuario) {
         this.scanner = scanner;
         this.usuario = usuario;
-        this.carrinho = new Carrinho(usuario);
+        this.carrinho = CarrinhoMemoria.getCarrinho(usuario);
         this.produtoDAO = new ProdutoDAOImpl();
     }
 
